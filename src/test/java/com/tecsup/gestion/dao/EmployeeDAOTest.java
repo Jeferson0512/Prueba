@@ -22,6 +22,7 @@ import com.tecsup.gestion.exception.DAOException;
 import com.tecsup.gestion.exception.EmptyResultException;
 import com.tecsup.gestion.model.Employee;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml")
 @WebAppConfiguration
@@ -43,7 +44,7 @@ public class EmployeeDAOTest {
 	public  void before() {
 		logger.info("Antes de cada metodo");
 	}
-	
+	/*
 	@Test
 	public void testFindEmployeeById() {
 
@@ -144,8 +145,6 @@ public class EmployeeDAOTest {
 
 	}
 
-	
-	
 	@Test
 	public void testUpdateEmployee() {
 
@@ -182,8 +181,7 @@ public class EmployeeDAOTest {
 		}
 
 	}
-	
-	
+
 	@Test
 	public void testDeleteEmployee() {
 
@@ -216,6 +214,25 @@ public class EmployeeDAOTest {
 			return;
 		}
 
+	}
+	*/
+	
+	
+	@Test
+	public void testFindAllEmployeesAge() {
+
+		try {
+			//
+			List<Employee> emps = employeeDAO.findAllEmployeesAge("Jaime","Gomez",0);
+
+			logger.info(emps.toString());
+
+		} catch (EmptyResultException e) {
+			fail(e.getMessage());
+		} catch (DAOException e) {
+			fail(e.getMessage());
+		}
+		
 	}
 	
 	@After

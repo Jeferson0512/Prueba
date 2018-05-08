@@ -8,6 +8,7 @@ public class Employee {
 	String firstname;
 	String lastname;
 	int salary;
+	int age;
 
 	
 	/**
@@ -18,17 +19,26 @@ public class Employee {
 	 * @param lastname
 	 * @param salary
 	 */
-	public Employee(String login, String password, String firstname, String lastname, int salary) {
+	public Employee(String login, String password, String firstname, String lastname, int salary, int age) {
 		super();
 		this.login = login;
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.salary = salary;
+		this.age = age;
 	}
 
 	public Employee() {
 		super();
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	public String getLogin() {
@@ -82,7 +92,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [login=" + login + ", password=" + password + ", employeeId=" + employeeId + ", firstname="
-				+ firstname + ", lastname=" + lastname + ", salary=" + salary + "]";
+				+ firstname + ", lastname=" + lastname + ", salary=" + salary + ", age=" + age + "]";
 	}
 
 }

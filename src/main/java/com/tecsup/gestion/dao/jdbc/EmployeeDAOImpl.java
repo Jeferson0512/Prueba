@@ -28,8 +28,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public Employee findEmployee(int employee_id) throws DAOException, EmptyResultException {
 
-		String query = "SELECT employee_id, login, password, first_name, last_name, salary, department_id "
-				+ " FROM employees WHERE employee_id = ?";
+		String query = "SELECT employee_id, login, password, first_name, last_name, salary, age department_id FROM employees WHERE employee_id = ?";
 
 		Object[] params = new Object[] { employee_id };
 
@@ -196,6 +195,29 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			logger.info("Error: " + e.getMessage());
 			throw new DAOException(e.getMessage());
 		}
+	}
+	
+	@Override
+	public List<Employee> findAllEmployeesAge(String firstname, String lastname, int age) throws DAOException, EmptyResultException {
+		String query = "SELECT employee_id, login, password, first_name, last_name, age, salary, "
+				+ "department_id FROM employees  WHERE first_name = ? and last_name = ? and age = ?  ";
+
+		Object[] params = new Object[] { firstname, lastname, age };
+
+		try {
+
+			List<Employee> employees = jdbcTemplate.query(query, params, new EmployeeMapper());
+			//Employee employees = (Employee) jdbcTemplate.queryForObject(query, params, new EmployeeMapper());
+
+			return employees;
+
+		} catch (EmptyResultDataAccessException e) {
+			throw new EmptyResultException();
+		} catch (Exception e) {
+			logger.info("Error: " + e.getMessage());
+			throw new DAOException(e.getMessage());
+		}
+		
 	}
 
 }

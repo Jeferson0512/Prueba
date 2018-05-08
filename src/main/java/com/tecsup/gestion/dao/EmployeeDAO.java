@@ -25,4 +25,6 @@ public interface EmployeeDAO {
 
 	Employee validate(String idEmployee, String clave) throws LoginException, DAOException;
 
+	List<Employee> findAllEmployeesAge(String firstname,String lastname, int age) throws DAOException, EmptyResultException;
+	
 }
